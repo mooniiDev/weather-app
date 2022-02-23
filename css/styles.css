@@ -1,1 +1,31 @@
- 
+/* COLORS PALETTE */
+:root {
+  --white: #DFE1E3;
+  --dark-blue: #1A2539;
+  --light-blue: #2F3E46;
+  --light-green: #779793;
+  --light-yellow: #FFDCAA;
+}
+
+/* HEADER */
+#logo {
+  padding: 30px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 60px;
+  color: var(--white);
+}
+.fa-eclipse-alt {
+  margin-right: 10px;
+}
+.theme-sun-moon {
+  --fa-secondary-opacity: 1.0;
+  --fa-primary-color: var(--light-green);
+  --fa-secondary-color: var(--light-yellow);
+}
+
+/*BODY */
+body {
+  height: 100vh;
+  background: var(--dark-blue);
+  background: linear-gradient(120deg, rgba(26,37,57,1) 0%, rgba(47,62,70,1) 100%);
+}
