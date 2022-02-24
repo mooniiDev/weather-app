@@ -3,7 +3,7 @@ const api = (() => {
   async function getWeather() {
     try {
       const response = await fetch(
-        'https://api.openweathermap.org/data/2.5/weather?q=zimbabwe&appid=0baf2fc9b70638f2b2157bf4fe3efde1',
+        'https://api.openweathermap.org/data/2.5/weather?q=zimbabwe&units=metric&appid=0baf2fc9b70638f2b2157bf4fe3efde1',
         { mode: 'cors' },
       );
       const data = await response.json();
@@ -17,7 +17,23 @@ const api = (() => {
   async function processWeather() {
     const weatherData = await getWeather();
     const processedData = {
+      name: weatherData.name,
+      timezone: weatherData.timezone,
+      cityId: weatherData.id,
       weatherId: weatherData.weather[0].id,
+      description: weatherData.weather[0].description,
+      temp: weatherData.main.temp,
+      feelsLike: weatherData.main.feels_like,
+      tempMin: weatherData.main.temp_min,
+      tempMax: weatherData.main.temp_max,
+      pressure: weatherData.main.pressure,
+      humidity: weatherData.main.humidity,
+      visibility: weatherData.visibility,
+      windSpeed: weatherData.wind.speed,
+      windGust: weatherData.wind.gust,
+      windDeg: weatherData.wind.deg,
+      sunrise: weatherData.sys.sunrise,
+      sunset: weatherData.sys.sunset,
     };
     return processedData;
   }
