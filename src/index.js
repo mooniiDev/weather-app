@@ -1,1 +1,3 @@
-console.log('Meteo!');
+import dom from './dom';
+
+dom.showWeather();

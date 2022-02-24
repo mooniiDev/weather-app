@@ -1,6 +1,6 @@
-/* COLORS PALETTE */
+/* COLOR PALETTE */
 :root {
-  --white: #DFE1E3;
+  --white: #ECECEC;
   --dark-blue: #1A2539;
   --light-blue: #2F3E46;
   --light-green: #779793;
@@ -17,7 +17,7 @@
 .fa-eclipse-alt {
   margin-right: 10px;
 }
-.theme-sun-moon {
+.theme-logo {
   --fa-secondary-opacity: 1.0;
   --fa-primary-color: var(--light-green);
   --fa-secondary-color: var(--light-yellow);
