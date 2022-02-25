@@ -16,9 +16,56 @@
   <title>Meteo - Weather App</title>
 </head>
 <body>
-  <header>
+  <!-- HEADER -->
+  <header id="header">
+
+    <!-- LOGO -->
     <h1 id="logo"><i class="fad fa-eclipse-alt theme-logo"></i>Meteo</h1>
+
+    <!-- SEARCH -->
+    <div id="search">
+      <button class="search-btn" type="submit">
+        <i class="fad fa-search theme-search"></i>
+      </button>
+      <input type="search" name="search" class="search-input" placeholder="Which city's weather are you interested in?" autocomplete="off"></i>
+    </div>
   </header>
 
+  <!-- CITY NAME -->
+  <div class="city-name">
+    <h2>ZIMBABWE</h2>
+  </div>
+
+  <!-- DATE & TIME -->
+  <div class="date-and-time">
+    <p>Fri, Nov 11, 11:11am</p>
+  </div>
+
+  <!-- WEATHER DATA -->
+  <div id="weather-data">
+    <div class="first-data-part">
+      <div class="temp">
+        <p class="current-temp">30°C</p>
+        <p class="feels-like">Feels like 29°C</p>
+      </div>
+      <div class="rise-set">
+        <p><i class="fad fa-sun theme-city-weather-icon"></i>Clear Sky</p>
+        <p><i class="fad fa-sunrise"></i>Sunrise 04:01am</p>
+        <p><i class="fad fa-sunset"></i>Sunset 04:33pm</p>
+      </div>
+    </div>
+    <div class="second-data-part">
+      <div class="air">
+        <p><i class="fad fa-tachometer-alt-fast"></i>Pressure 1010hPa</p>
+        <p><i class="fad fa-humidity"></i>Humidity 33%</p>
+        <p><i class="fad fa-eye"></i>Visibility 10000m</p>
+      </div>
+      <div class="wind">
+        <p><i class="fad fa-wind"></i>Wind Speed 1.11m/s</p>
+        <p><i class="fad fa-expand-arrows-alt"></i>Wind Direction East</p>
+        <p><i class="fad fa-tornado"></i>Wind Gusts 7.77m/s</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
