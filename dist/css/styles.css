@@ -90,7 +90,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 30px;
+  padding: 30px 30px;
 }
 #logo {
   margin-right: 60px;
@@ -130,7 +130,7 @@ body {
 
 /* MAIN CONTENT */
 #main {
-  padding: 50px 0;
+  padding: 50px 30px;
 }
 /* CITY NAME */
 .city-name {
@@ -154,10 +154,13 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 60px 0;
 }
 .first-data-part {
+  padding: 30px 0;
   border-bottom: 3px solid var(--light-green);
+}
+.second-data-part {
+  padding: 30px 0;
 }
 .temp,
 .rise-set,
@@ -210,4 +213,44 @@ body {
 .footer-link:hover {
   color: var(--light-yellow);
   transition: .2s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 848px) {
+  #logo {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 647px) {
+  .first-data-part {
+    border-bottom: none;
+  }
+  .first-data-part,
+  .second-data-part {
+    padding: 0;
+  }
+  .temp {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 595px) {
+  .search-btn,
+  .search-input {
+    font-size: 1.2rem;
+  }
+  .search-input {
+    width: 390px;
+  }
+}
+
+@media (max-width: 505px) {
+  .search-btn,
+  .search-input {
+    font-size: 0.9rem;
+  }
+  .search-input {
+    width: 295px;
+  }
 }
