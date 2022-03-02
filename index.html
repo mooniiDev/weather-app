@@ -20,7 +20,7 @@
   <header id="header">
 
     <!-- LOGO -->
-    <h1 id="logo"><i class="fad fa-eclipse-alt theme-logo"></i>Meteo</h1>
+    <h1 id="logo"><i class="fad fa-eclipse-alt theme-logo"></i> Meteo</h1>
 
     <!-- SEARCH -->
     <div id="search">
@@ -31,41 +31,55 @@
     </div>
   </header>
 
-  <!-- CITY NAME -->
-  <div class="city-name">
-    <h2>ZIMBABWE</h2>
-  </div>
+  <!-- MAIN CONTENT -->
+  <div id="main">
 
-  <!-- DATE & TIME -->
-  <div class="date-and-time">
-    <p>Fri, Nov 11, 11:11am</p>
-  </div>
+    <!-- CITY NAME -->
+    <div class="city-name">
+      <h2>ZIMBABWE</h2>
+    </div>
 
-  <!-- WEATHER DATA -->
-  <div id="weather-data">
-    <div class="first-data-part">
-      <div class="temp">
-        <p class="current-temp">30°C</p>
-        <p class="feels-like">Feels like 29°C</p>
+    <!-- DATE & TIME -->
+    <div class="date-and-time">
+      <p>Fri, Nov 11, 11:11am</p>
+    </div>
+
+    <!-- WEATHER DATA -->
+    <div id="weather-data">
+      <div class="first-data-part">
+        <div class="temp">
+          <p class="current-temp">21°C</p>
+          <p class="feels-like">Feels like<span class="first-part-measure">42°C</span></p>
+          <p><i class="fad fa-temperature-low fa-fw"></i><span class="measure fahrenheit-btn">Check in °F</span></p>
+        </div>
+        <div class="rise-set">
+          <p class="description"><i class="fad fa-clouds"></i> Broken Clouds</p>
+          <p><i class="fad fa-sunrise fa-fw"></i> Sunrise <span class="measure">04:20am</span></p>
+          <p><i class="fad fa-sunset fa-fw"></i> Sunset<span class="measure">04:20pm</span></p>
+        </div>
       </div>
-      <div class="rise-set">
-        <p><i class="fad fa-sun theme-city-weather-icon"></i>Clear Sky</p>
-        <p><i class="fad fa-sunrise"></i>Sunrise 04:01am</p>
-        <p><i class="fad fa-sunset"></i>Sunset 04:33pm</p>
+      <div class="second-data-part">
+        <div class="air">
+          <p><i class="fad fa-tachometer-alt-fast fa-fw"></i> Pressure<span class="measure">1010hPa</span></p>
+          <p><i class="fad fa-humidity fa-fw"></i> Humidity<span class="measure">33%</span></p>
+          <p><i class="fad fa-eye fa-fw"></i> Visibility<span class="measure">13000m</span></p>
+        </div>
+        <div class="wind">
+          <p><i class="fad fa-wind fa-fw"></i> Wind Speed<span class="measure">3.33m/s</span></p>
+          <p><i class="fad fa-expand-arrows-alt fa-fw"></i> Wind Direction<span class="measure">East</span></p>
+          <p><i class="fad fa-tornado fa-fw"></i> Wind Gusts<span class="measure">7.77m/s</span></p>
+        </div>
       </div>
     </div>
-    <div class="second-data-part">
-      <div class="air">
-        <p><i class="fad fa-tachometer-alt-fast"></i>Pressure 1010hPa</p>
-        <p><i class="fad fa-humidity"></i>Humidity 33%</p>
-        <p><i class="fad fa-eye"></i>Visibility 10000m</p>
-      </div>
-      <div class="wind">
-        <p><i class="fad fa-wind"></i>Wind Speed 1.11m/s</p>
-        <p><i class="fad fa-expand-arrows-alt"></i>Wind Direction East</p>
-        <p><i class="fad fa-tornado"></i>Wind Gusts 7.77m/s</p>
-      </div>
-    </div>
   </div>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <p class="crafted-by"> ☽ Crafted by
+      <a href="https://github.com/mooniiDev" target="_blank" class="footer-link">mooniiDev</a> |
+      <a href="https://github.com/mooniiDev/weather-app" target="_blank" class="footer-link">Source</a> ☾
+    </p>
+  </footer>
+
 </body>
 </html>
