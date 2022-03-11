@@ -3,13 +3,13 @@ const api = (() => {
   async function getWeather() {
     try {
       const response = await fetch(
-        'https://api.openweathermap.org/data/2.5/weather?q=zimbabwe&units=metric&appid=0baf2fc9b70638f2b2157bf4fe3efde1',
+        'https://api.openweathermap.org/data/2.5/weather?q=amsterdam&units=metric&appid=0baf2fc9b70638f2b2157bf4fe3efde1',
         { mode: 'cors' },
       );
       const data = await response.json();
       return data;
     } catch (err) {
-      return console.error('Oh no!', err);
+      return err;
     }
   }
 
