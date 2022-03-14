@@ -1,26 +1,32 @@
 /* COLOR PALETTE */
 :root {
-  --white: #ECECEC;
   --dark-blue: #1D2F42;
   --dark-yellow: #FFAD74;
   --dark-green: #162F2D;
+  --dark-red: #D95277;
+  --white: #ECECEC;
   --light-yellow: #FFDCAA;
   --light-green: #4E7774;
   --light-grey: #BDBDBD;
   --light-blue: #8FC3CF;
+  --light-red: #F0B7C7;
 }
 
-/* ICONS COLOR THEMES */
+/* ICONS COLOR */
 .fad {
   --fa-secondary-opacity: 1.0;
 }
-.theme-logo {
+.logo {
   --fa-primary-color: var(--light-green);
   --fa-secondary-color: var(--light-yellow);
 }
-.theme-search {
+.search-btn {
   --fa-primary-color: var(--light-grey);
   --fa-secondary-color: var(--white);
+}
+.error-icon {
+  --fa-primary-color: var(--dark-red);
+  --fa-secondary-color: var(--light-red);
 }
 .fa-temperature-low {
   --fa-primary-color: var(--light-blue);
@@ -73,7 +79,6 @@ html,
 body {
   min-height: 100%;
 }
-
 body {
   background: var(--dark-blue);
   background: -webkit-linear-gradient(top left, #1D2F42, #162F2D);
@@ -131,16 +136,26 @@ header {
   opacity: 1;
 }
 
+/* ERROR */
+.error-msg {
+  text-align: center;
+  color: var(--light-red);
+}
+.hide-err {
+  display: none;
+}
+
 /* MAIN CONTENT */
 #main {
   padding: 50px 30px;
 }
+
 /* CITY NAME */
-.city-name {
+.city-name-div {
   margin-bottom: 10px;
   font-size: 2.5rem;
 }
-.city-name,
+.city-name-div,
 .date-and-time {
   text-align: center;
 }
@@ -180,7 +195,7 @@ header {
 }
 .description {
   font-size: 2rem;
-  margin-bottom: 13px;
+  margin-bottom: 15px;
 }
 .measure {
   margin-left: 10px;
@@ -188,7 +203,7 @@ header {
   background-color: var(--light-blue);
   color: var(--dark-blue);
   border-radius: 5px;
-  transition: all .2s;
+  transition: all .1s;
 }
 .feels-like-measure {
   margin-left: 10px;
@@ -230,6 +245,9 @@ header {
   .search-btn {
     font-size: 1.2rem;
   }
+  .error-msg {
+    padding-top: 15px;
+  }
   h2 {
     font-size: 2rem;
   }
@@ -261,11 +279,11 @@ header {
   #logo {
     margin-bottom: 30px;
   }
-  .search-input,
   .search-btn {
     font-size: 1rem;
   }
   .search-input {
     width: 250px;
+    font-size: 1.1rem;
   }
 }

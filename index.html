@@ -18,25 +18,29 @@
 <body>
   <!-- HEADER -->
   <header>
-
     <!-- LOGO -->
-    <h1 id="logo"><i class="fad fa-eclipse-alt theme-logo"></i> Meteo</h1>
+    <h1 id="logo"><i class="fad fa-eclipse-alt logo"></i> Meteo</h1>
 
     <!-- SEARCH -->
     <div id="search">
-      <button class="search-btn" type="submit">
-        <i class="fad fa-search theme-search"></i>
-      </button>
-      <input type="search" name="search" class="search-input" placeholder="Enter City.." autocomplete="off"></i>
+      <div class="search-area">
+        <button class="search-btn" type="submit">
+          <i class="fad fa-search"></i>
+        </button>
+        <input type="search" name="search" class="search-input" placeholder="Enter a city.." autocomplete="off"></i>
+      </div>
     </div>
   </header>
+
+    <!-- ERROR MESSAGE -->
+  <p class="error-msg hide-err">error</p>
 
   <!-- MAIN CONTENT -->
   <div id="main">
 
     <!-- CITY NAME -->
-    <div class="city-name">
-      <h2>AMSTERDAM</h2>
+    <div class="city-name-div">
+      <h2 class="city-name-heading"><span class="city"></span>, <span class="country"></span></h2>
     </div>
 
     <!-- DATE & TIME -->
