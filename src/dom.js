@@ -1,40 +1,41 @@
+const moment = require('moment');
+
 const dom = (() => {
   const errorMessage = document.querySelector('.error-msg');
 
-  function showCityName(name, country) {
-    const cityName = document.querySelector('.city');
-    const countryLetters = document.querySelector('.country');
-
-    cityName.textContent = name.toUpperCase();
-    countryLetters.textContent = country;
-  }
-
-  function showErrorMsg(error) {
+  function showErrorMsg() {
     const cityNameDiv = document.querySelector('.city-name-heading');
 
-    // IF ERROR IS CLIENT-SIDE
-    if (error === 'client') {
-      errorMessage.textContent = 'Client error response!';
-      // IF ERROR IS SERVER-SIDE
-    } else if (error === 'server') {
-      errorMessage.textContent = 'Server error response!';
-    }
     errorMessage.classList.remove('hide-err');
+    errorMessage.textContent = 'City not found.. 🙈';
     cityNameDiv.textContent = '-';
   }
 
+  // DATA RENDERING
   function renderData(weatherData) {
-    // IF ERROR OCCURS - SHOW A MESSAGE
-    if (weatherData >= 400 && weatherData <= 499) {
-      showErrorMsg('client');
-    } else if (weatherData >= 500 && weatherData <= 599) {
-      showErrorMsg('server');
+    const cityName = document.querySelector('.city');
+    const countryLetters = document.querySelector('.country');
+    const dateTimeDiv = document.querySelector('.date-time');
 
+    // IF CLIENT-SIDE ERROR OCCURS - SHOW A MESSAGE
+    if (weatherData >= 400 && weatherData <= 499) {
+      showErrorMsg();
       // IF NO ERRORS - SHOW WEATHER DATA
     } else {
+      const timezone = weatherData.timezone / 60 / 60;
+      const formattedDate = moment()
+        .utcOffset(timezone)
+        .format('MMMM D, YYYY | dddd, H:mm');
+
+      // REMOVE ERROR MESSAGE
       errorMessage.classList.add('hide-err');
-      // CITY NAME
-      showCityName(weatherData.name, weatherData.country);
+
+      // RENDER CITY NAME
+      cityName.textContent = weatherData.name.toUpperCase();
+      countryLetters.textContent = weatherData.country;
+
+      // RENDER CURRENT DATE AND TIME
+      dateTimeDiv.textContent = formattedDate;
     }
   }
   return {

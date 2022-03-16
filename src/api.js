@@ -4,7 +4,7 @@ const api = (() => {
     const processedData = {
       name: weatherData.name,
       country: weatherData.sys.country,
-      dataCalcTime: weatherData.dt,
+      timezone: weatherData.timezone,
       description: weatherData.weather[0].description,
       weatherIcon: weatherData.weather[0].icon,
       temp: weatherData.main.temp,
@@ -31,8 +31,8 @@ const api = (() => {
 
       let data = await response.json();
 
-      // IF ERROR OCCURS
-      if (response.status >= 400) {
+      // IF CLIENT-SIDE ERROR OCCURS
+      if (response.status >= 400 && response.status <= 499) {
         data = response.status;
         return data;
       }
