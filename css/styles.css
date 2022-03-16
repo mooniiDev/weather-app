@@ -13,7 +13,7 @@
 }
 
 /* ICONS COLOR */
-.fad {
+.svg-inline--fa {
   --fa-secondary-opacity: 1.0;
 }
 .logo {
@@ -156,7 +156,7 @@ header {
   font-size: 2.5rem;
 }
 .city-name-div,
-.date-and-time {
+.date-time {
   text-align: center;
 }
 
@@ -251,7 +251,7 @@ header {
   h2 {
     font-size: 2rem;
   }
-  .date-and-time {
+  .date-time {
     font-size: 0.9rem;
   }
   .temp {
