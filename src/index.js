@@ -1,5 +1,6 @@
 import api from './api';
 import dom from './dom';
+import handlers from './handlers';
 
 // GET AND SHOW DEFAULT WEATHER DATA
 async function getDefaultData() {
@@ -8,3 +9,5 @@ async function getDefaultData() {
   return weatherData;
 }
 getDefaultData();
+
+handlers.listenClicks();

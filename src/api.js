@@ -1,6 +1,6 @@
 const api = (() => {
   // PROCESS WEATHER DATA
-  async function processData(weatherData) {
+  function processData(weatherData) {
     const processedData = {
       name: weatherData.name,
       country: weatherData.sys.country,
