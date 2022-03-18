@@ -6,10 +6,11 @@ const handlers = (() => {
     const searchBtn = document.querySelector('.search-btn');
 
     searchBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+
       const searchInputValue = document.querySelector('.search-input').value;
       const weatherData = await api.getData(searchInputValue, 'metric');
 
-      e.preventDefault();
       dom.renderData(weatherData);
     });
   }
