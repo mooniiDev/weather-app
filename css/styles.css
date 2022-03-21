@@ -75,10 +75,16 @@
   --fa-secondary-color: var(--light-grey);
 }
 
+/* VISUAL STYLES */
+.hide {
+  display: none;
+}
 html,
 body {
   min-height: 100%;
 }
+
+/* BODY */
 body {
   background: var(--dark-blue);
   background: -webkit-linear-gradient(top left, #1D2F42, #162F2D);
@@ -138,16 +144,14 @@ header {
 
 /* ERROR */
 .error-msg {
+  padding-top: 20px;
   text-align: center;
   color: var(--light-red);
-}
-.hide-err {
-  display: none;
 }
 
 /* MAIN CONTENT */
 #main {
-  padding: 50px 30px;
+  padding: 50px 30px 0 30px;
 }
 
 /* CITY NAME */
@@ -220,7 +224,7 @@ header {
 
 /* FOOTER */
 #footer {
-  margin: 30px;
+  margin-top: 50px;
   text-align: center;
 }
 .footer-link {
