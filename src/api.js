@@ -29,16 +29,15 @@ const api = (() => {
         { mode: 'cors' },
       );
 
-      let data = await response.json();
+      const data = await response.json();
 
       // IF CLIENT-SIDE ERROR OCCURS
-      if (response.status >= 400 && response.status <= 499) {
-        data = response.status;
+      if (response.status >= 400) {
         return data;
       }
       return processData(data);
     } catch (err) {
-      return err.message;
+      return { cod: err.name, message: err.message };
     }
   }
   return {

@@ -2,10 +2,11 @@ const moment = require('moment');
 
 const dom = (() => {
   const errorMessage = document.querySelector('.error-msg');
+  const main = document.querySelector('#main');
 
-  function showErrorMsg() {
-    errorMessage.classList.remove('hide-err');
-    errorMessage.textContent = 'City not found.. 🙈';
+  function showErrorMsg(msg) {
+    errorMessage.classList.remove('hide');
+    errorMessage.textContent = `${msg.charAt(0).toUpperCase() + msg.slice(1)}.. 🙊`;
   }
 
   function formatDate(timezone) {
@@ -19,21 +20,27 @@ const dom = (() => {
   // DATA RENDERING
   function renderData(weatherData) {
     const dateTimeDiv = document.querySelector('.date-time');
+    const cityName = document.querySelector('.city-name-heading');
+    const currentTempPar = document.querySelector('.current-temp');
+    const currentTemp = Math.round(weatherData.temp);
 
-    // IF CLIENT-SIDE ERROR OCCURS - SHOW A MESSAGE
-    if (weatherData >= 400 && weatherData <= 499) {
-      showErrorMsg();
-      // IF NO ERRORS - SHOW WEATHER DATA
+    // IF CLIENT-SIDE ERROR OCCURS - HIDE MAIN CONTENT AND SHOW ERROR MESSAGE
+    if (weatherData.cod) {
+      main.classList.add('hide');
+      showErrorMsg(weatherData.message);
     } else {
-      // REMOVE ERROR MESSAGE
-      errorMessage.classList.add('hide-err');
+      // SHOW MAIN CONTENT AND REMOVE ERROR MESSAGE
+      main.classList.remove('hide');
+      errorMessage.classList.add('hide');
 
       // RENDER CITY NAME
-      const cityName = document.querySelector('.city-name-heading');
       cityName.textContent = `${weatherData.name.toUpperCase()}, ${weatherData.country}`;
 
       // RENDER CURRENT DATE AND TIME
       dateTimeDiv.textContent = formatDate(weatherData.timezone);
+
+      // RENDER CURRENT TEMPERATURE (IN CELCIUS)
+      currentTempPar.textContent = `${currentTemp}°C`;
     }
   }
   return {
