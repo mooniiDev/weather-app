@@ -179,7 +179,7 @@ h3 {
   grid-template-areas:
     'first-part first-part'
     'second-part second-part';
-  padding: 30px;
+  padding: 30px 0;
 }
 .measure {
   margin-left: 10px;
@@ -197,7 +197,7 @@ h3 {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 'temp rise-set';
-  padding: 30px;
+  padding: 30px 0;
   border-bottom: 3px solid var(--light-green);
 }
 .temp {
@@ -217,6 +217,7 @@ h3 {
   font-size: 3rem;
   color: var(--light-yellow);
 }
+
 /* BUTTON TO CHANGE TEMPERATURE UNIT OF MEASUREMENT */
 .temp-btn {
   color: var(--dark-blue);
@@ -252,7 +253,7 @@ h3 {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 'air wind';
-  padding: 30px;
+  padding-top: 30px;
 }
 .air {
   grid-area: air;
@@ -264,7 +265,7 @@ h3 {
 /* FOOTER */
 #footer {
   grid-area: footer;
-  padding: 30px;
+  padding-bottom: 30px;
   font-size: 1.2rem;
 }
 .footer-link {
@@ -275,4 +276,78 @@ h3 {
 .footer-link:hover {
   color: var(--light-yellow);
   transition: 0.2s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  #header {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+    '. logo .'
+    '. search .'
+    '. error .';
+  padding-bottom: 0;
+  }
+  #search,
+  .error-msg {
+    padding-top: 30px;
+  }
+  .first-data-part {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    'temp'
+    'rise-set';
+    border-bottom: none;
+    padding: 30px 0 0 0;
+  }
+  .rise-set {
+    padding-top: 30px;
+  }
+  .second-data-part {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+    'air'
+    'wind';
+  }
+  .temp,
+  .rise-set,
+  .air,
+  .wind {
+    text-align: center;
+  }
+}
+@media (max-width: 576px) {
+  .logo {
+    font-size: 2.5rem;
+  }
+  .search-btn,
+  .search-input,
+  #footer {
+    font-size: 1rem;
+  }
+  .city-name-div {
+    font-size: 1.4rem;
+  }
+  .date-time {
+    font-size: 0.9rem;
+  }
+  .current-temp {
+    font-size: 2.5rem;
+  }
+  .description {
+    font-size: 1.7rem;
+  }
+  .temp-btn {
+    font-size: 1.3rem;
+  }
+  .temp,
+  .rise-set,
+  .air,
+  .wind {
+    font-size: 1.2rem;
+    line-height: 50px;
+  }
 }
