@@ -3,15 +3,22 @@ import dom from './dom';
 
 const handlers = (() => {
   function listenClicks() {
-    const searchBtn = document.querySelector('.search-btn');
+    const body = document.querySelector('body');
 
-    searchBtn.addEventListener('click', async (e) => {
-      e.preventDefault();
+    body.addEventListener('click', async (event) => {
+      const { target } = event;
 
-      const searchInputValue = document.querySelector('.search-input').value;
-      const weatherData = await api.getData(searchInputValue, 'metric');
+      event.preventDefault();
 
-      dom.renderData(weatherData);
+      if (
+        target.classList.contains('search-btn')
+        || target.classList.contains('fa-primary')
+        || target.classList.contains('fa-secondary')
+      ) {
+        const searchInputValue = document.querySelector('.search-input').value;
+        const weatherData = await api.getData(searchInputValue, 'metric');
+        dom.renderData(weatherData);
+      }
     });
   }
   return {

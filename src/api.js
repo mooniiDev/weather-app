@@ -6,7 +6,7 @@ const api = (() => {
       country: weatherData.sys.country,
       timezone: weatherData.timezone,
       description: weatherData.weather[0].description,
-      weatherIcon: weatherData.weather[0].icon,
+      icon: weatherData.weather[0].icon,
       temp: weatherData.main.temp,
       feelsLike: weatherData.main.feels_like,
       pressure: weatherData.main.pressure,
