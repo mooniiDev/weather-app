@@ -279,7 +279,7 @@ h3 {
 }
 
 /* RESPONSIVE */
-@media (max-width: 992px) {
+@media only screen and (max-width: 992px) {
   #header {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto auto;
@@ -311,6 +311,7 @@ h3 {
     grid-template-areas:
     'air'
     'wind';
+    padding-top: 0;
   }
   .temp,
   .rise-set,
@@ -319,7 +320,7 @@ h3 {
     text-align: center;
   }
 }
-@media (max-width: 576px) {
+@media only screen and (max-width: 576px) {
   .logo {
     font-size: 2.5rem;
   }
