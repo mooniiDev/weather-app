@@ -19,14 +19,13 @@
   </head>
   <body>
     <div id="wrapper">
-      <header id="header">
-        <!-- LOGO -->
-        <h1 class="logo"><i class="fad fa-eclipse-alt logo"></i> Meteo</h1>
-
-        <!-- SEARCH -->
+      <header class="header">
+        <a class="logo" href="#"
+          ><i class="fad fa-eclipse-alt logo"></i> Meteo</a
+        >
         <form id="search" action="#" method="get">
-          <button class="search-btn" type="submit">
-            <i class="fad fa-search search-btn"></i>
+          <button class="search-button" type="submit">
+            <i class="fad fa-search search-button"></i>
           </button>
           <input
             type="search"
@@ -36,101 +35,94 @@
             autocomplete="off"
           />
         </form>
-
-        <!-- ERROR MESSAGE -->
-        <p class="error-msg hide"></p>
+        <p class="search-error hide"></p>
       </header>
-
-      <!-- WEATHER DATA SHOWCASE -->
-      <main id="main">
-        <!-- CITY NAME -->
-        <div class="city-name-div">
-          <h2 class="city-name-heading">
-            <span class="city"></span>, <span class="country"></span>
-          </h2>
+      <main class="main">
+        <div class="section-heading">
+          <h1 class="heading-city">
+            <span class="data-city"></span>, <span class="data-country"></span>
+          </h1>
+          <p class="heading-city-date"></p>
         </div>
 
-        <!-- DATE & TIME -->
-        <div class="date-time">
-          <p></p>
+        <div class="section-main">
+          <p class="main-temp">
+            <span class="data-temp">13</span><span class="unit-temp">°C</span>
+          </p>
+          <p class="main-description">
+            <i class="fad fa-clouds description-icon"></i> Scattered Clouds
+          </p>
+          <p>
+            <button type="button" class="change-unit">
+              <i class="fad fa-sync-alt fa-fw"></i> Check in °F
+            </button>
+          </p>
         </div>
 
-        <!-- WEATHER DATA -->
-        <div class="weather-data">
-          <!-- TEMPERATURE AND TIME DATA -->
-          <div class="first-data-part">
-            <div class="temp">
-              <p class="current-temp">13°C</p>
-              <p class="description">
-                <i class="fad fa-clouds"></i> Broken Clouds
-              </p>
-              <p>
-                <span class="temp-btn"
-                  ><i class="fad fa-sync-alt fa-fw"></i> Check in °F</span
-                >
-              </p>
-            </div>
-            <div class="rise-set">
-              <p class="feels-like">
-                <i class="fad fa-temperature-low fa-fw"></i> Feels like
-                <span class="measure feels-like-measure">42°C</span>
-              </p>
-              <p>
-                <i class="fad fa-sunrise fa-fw"></i> Sunrise
-                <span class="measure">04:20am</span>
-              </p>
-              <p>
-                <i class="fad fa-sunset fa-fw"></i> Sunset<span class="measure"
-                  >04:20pm</span
-                >
-              </p>
-            </div>
-          </div>
+        <div class="section-additional">
+          <p class="additional-feels-like">
+            <i class="fad fa-temperature-low fa-fw"></i> Feels like
+            <span class="measurement"
+              ><span class="data-feels-like">42</span
+              ><span class="unit-feels-like">°C</span></span
+            >
+          </p>
+          <p class="additional-sunrise">
+            <i class="fad fa-sunrise fa-fw"></i> Sunrise
+            <span class="data-sunrise measurement">04:20 AM</span>
+          </p>
+          <p class="additional-sunset">
+            <i class="fad fa-sunset fa-fw"></i> Sunset
+            <span class="data-sunset measurement">04:20 PM</span>
+          </p>
+        </div>
 
-          <!-- AIR AND WIND DATA -->
-          <div class="second-data-part">
-            <div class="air">
-              <p>
-                <i class="fad fa-tachometer-alt-fast fa-fw"></i>
-                Pressure
-                <span class="measure">1010hPa</span>
-              </p>
-              <p>
-                <i class="fad fa-humidity fa-fw"></i> Humidity<span
-                  class="measure"
-                  >33%</span
-                >
-              </p>
-              <p>
-                <i class="fad fa-eye fa-fw"></i> Visibility<span class="measure"
-                  >13000m</span
-                >
-              </p>
-            </div>
-            <div class="wind">
-              <p>
-                <i class="fad fa-wind fa-fw"></i> Wind Speed<span
-                  class="measure"
-                  >3.33m/s</span
-                >
-              </p>
-              <p>
-                <i class="fad fa-expand-arrows-alt fa-fw"></i> Wind
-                Direction<span class="measure">South East</span>
-              </p>
-              <p>
-                <i class="fad fa-tornado fa-fw"></i> Wind Gusts<span
-                  class="measure"
-                  >7.77m/s</span
-                >
-              </p>
-            </div>
-          </div>
+        <div class="section-air">
+          <p>
+            <i class="fad fa-tachometer-alt-fast fa-fw"></i>
+            Pressure
+            <span class="data-pressure measurement">1010hPa</span>
+          </p>
+          <p>
+            <i class="fad fa-humidity fa-fw"></i>Humidity<span
+              class="data-humidity measurement"
+              >33%</span
+            >
+          </p>
+          <p>
+            <i class="fad fa-eye fa-fw"></i> Visibility<span
+              class="data-visibility measurement"
+              >13000m</span
+            >
+          </p>
+        </div>
+
+        <div class="section-wind">
+          <p>
+            <i class="fad fa-wind fa-fw"></i>Wind Speed
+            <span class="measurement">
+              <span class="data-speed">3.33</span>
+              <span class="unit-speed">m/s</span>
+            </span>
+          </p>
+          <p>
+            <i class="fad fa-expand-arrows-alt fa-fw"></i> Wind Direction<span
+              class="data-direction measurement"
+              >Southeast</span
+            >
+          </p>
+          <p>
+            <i class="fad fa-tornado fa-fw"></i> Wind Gusts<span
+              class="measurement"
+              ><span class="data-gusts">7.77</span>
+              <span class="unit-gusts">m/s</span></span
+            >
+          </p>
         </div>
       </main>
 
-      <footer id="footer">
-        <p class="crafted-by">
+      <footer class="footer">
+        <p>
           ☽ Crafted by
           <a
             href="https://github.com/mooniiDev"
