@@ -3,15 +3,15 @@ import dom from './dom';
 
 const handlers = (() => {
   function listenClicks() {
-    const body = document.querySelector('body');
+    const contentWrapper = document.querySelector('#wrapper');
 
-    body.addEventListener('click', async (event) => {
+    contentWrapper.addEventListener('click', async (event) => {
       const { target } = event;
 
       event.preventDefault();
 
       if (
-        target.classList.contains('search-btn')
+        target.classList.contains('search-button')
         || target.classList.contains('fa-primary')
         || target.classList.contains('fa-secondary')
       ) {

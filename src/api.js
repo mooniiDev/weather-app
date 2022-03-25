@@ -1,5 +1,4 @@
 const api = (() => {
-  // PROCESS WEATHER DATA
   function processData(weatherData) {
     const processedData = {
       name: weatherData.name,
@@ -21,7 +20,6 @@ const api = (() => {
     return processedData;
   }
 
-  // GET WEATHER DATA FROM API
   async function getData(city, unit) {
     try {
       const response = await fetch(
@@ -31,7 +29,7 @@ const api = (() => {
 
       const data = await response.json();
 
-      // IF CLIENT-SIDE ERROR OCCURS
+      // IF ERROR OCCURS
       if (response.status >= 400) {
         return data;
       }

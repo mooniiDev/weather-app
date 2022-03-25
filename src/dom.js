@@ -1,14 +1,14 @@
 const moment = require('moment');
 
 const dom = (() => {
-  const errorMessage = document.querySelector('.error-msg');
-  const main = document.querySelector('#main');
+  const errorMessage = document.querySelector('.search-error');
+  const mainContent = document.querySelector('.main');
 
-  function showErrorMsg(msg) {
-    main.classList.add('hide');
+  function showErrorMessage(message) {
+    mainContent.classList.add('hide');
     errorMessage.classList.remove('hide');
     errorMessage.textContent = `${
-      msg.charAt(0).toUpperCase() + msg.slice(1)
+      message.charAt(0).toUpperCase() + message.slice(1)
     }.. 🙊`;
   }
 
@@ -20,28 +20,21 @@ const dom = (() => {
     return formattedDate;
   }
 
-  // DATA RENDERING
   function renderData(weatherData) {
-    const dateTimeDiv = document.querySelector('.date-time');
-    const cityName = document.querySelector('.city-name-heading');
+    const cityDate = document.querySelector('.heading-city-date');
+    const cityName = document.querySelector('.heading-city');
 
-    // IF ERROR OCCURS - HIDE MAIN CONTENT AND SHOW ERROR MESSAGE
+    // IF ERROR OCCURS
     if (weatherData.cod) {
-      main.classList.add('hide');
-      showErrorMsg(weatherData.message);
-
-      // SHOW MAIN CONTENT AND REMOVE ERROR MESSAGE
+      mainContent.classList.add('hide');
+      showErrorMessage(weatherData.message);
     } else {
-      main.classList.remove('hide');
+      mainContent.classList.remove('hide');
       errorMessage.classList.add('hide');
 
-      // RENDER CITY NAME
-      cityName.textContent = `${weatherData.name.toUpperCase()}, ${
-        weatherData.country
-      }`;
-
-      // RENDER CURRENT DATE AND TIME
-      dateTimeDiv.textContent = formatDate(weatherData.timezone);
+      cityName.textContent = `${weatherData.name.toUpperCase()},
+      ${weatherData.country}`;
+      cityDate.textContent = formatDate(weatherData.timezone);
     }
   }
   return {
