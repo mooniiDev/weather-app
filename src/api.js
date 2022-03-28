@@ -1,4 +1,6 @@
 const api = (() => {
+  const API_KEY = '0baf2fc9b70638f2b2157bf4fe3efde1';
+
   function processData(weatherData) {
     const processedData = {
       name: weatherData.name,
@@ -23,7 +25,7 @@ const api = (() => {
   async function getData(city, unit) {
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=0baf2fc9b70638f2b2157bf4fe3efde1`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${API_KEY}`,
         { mode: 'cors' },
       );
 
