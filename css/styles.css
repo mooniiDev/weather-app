@@ -26,10 +26,16 @@
 .fa-temperature-low {
   --fa-primary-color: var(--light-blue);
   --fa-secondary-color: var(--light-grey);
+  /* THIS ICON'S ALIGNMENT IS DIFFERENT FROM OTHER ICONS */
+  padding-right: 5px;
 }
 .fa-sync-alt {
   --fa-primary-color: var(--light-grey);
   --fa-secondary-color: var(--light-blue);
+}
+.fa-clock {
+  --fa-primary-color: var(--dark-blue);
+  --fa-secondary-color: var(--light-grey);
 }
 .fa-sunrise {
   --fa-primary-color: var(--dark-yellow);
@@ -63,6 +69,8 @@
   --fa-primary-color: var(--dark-blue);
   --fa-secondary-color: var(--light-grey);
 }
+
+/* COLOR THEMES FOR WEATHER DESCRIPTION ICONS */
 .fa-sun {
   --fa-primary-color: var(--dark-yellow);
   --fa-secondary-color: var(--light-yellow);
@@ -198,17 +206,29 @@ body {
 .section-main > p:not(:last-child) {
   margin-bottom: 20px;
 }
+.main-temp,
+.data-temp {
+  display: flex;
+}
 .data-temp,
 .unit-temp {
   font-size: 3rem;
   color: var(--light-yellow);
+}
+.main-feels-like {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  border-left: 3px solid var(--light-green);
 }
 .main-description {
   font-size: 2rem;
   text-transform: capitalize;
 }
 .description-icon {
-  padding-right: 10px;
+  padding-right: 5px;
   font-size: 2.5rem;
 }
 .change-unit {
@@ -354,6 +374,9 @@ body {
   .data-temp,
   .unit-temp {
     font-size: 2.5rem;
+  }
+  .main-feels-like {
+    font-size: 1.1rem;
   }
   .description-icon,
   .main-description {
