@@ -13,6 +13,7 @@
 
 /* ICONS COLOR THEMES */
 .svg-inline--fa {
+  padding-right: 5px;
   --fa-secondary-opacity: 1;
 }
 .logo {
@@ -26,8 +27,6 @@
 .fa-temperature-low {
   --fa-primary-color: var(--light-blue);
   --fa-secondary-color: var(--light-grey);
-  /* THIS ICON'S ALIGNMENT IS DIFFERENT FROM OTHER ICONS */
-  padding-right: 5px;
 }
 .fa-sync-alt {
   --fa-primary-color: var(--light-grey);
@@ -75,6 +74,58 @@
   --fa-primary-color: var(--dark-yellow);
   --fa-secondary-color: var(--light-yellow);
 }
+.fa-moon-stars {
+  --fa-primary-color: var(--light-yellow);
+  --fa-secondary-color: var(--dark-yellow);
+}
+.fa-sun-cloud {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-moon-cloud {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-clouds-sun {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-clouds-moon {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-clouds {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-grey);
+}
+.fa-cloud-showers-heavy {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-blue);
+}
+.fa-cloud-showers {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-blue);
+}
+.fa-thunderstorm-sun {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-thunderstorm-moon {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-thunderstorm-moon {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-yellow);
+}
+.fa-cloud-snow {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-blue);
+}
+.fa-fog {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-blue);
+}
 
 html {
   font-size: 16px;
@@ -102,7 +153,6 @@ body {
   background-color: var(--light-blue);
   color: var(--dark-blue);
   border-radius: 5px;
-  transition: all 0.2s;
 }
 
 #wrapper {
@@ -131,6 +181,7 @@ body {
 }
 .logo {
   grid-area: logo;
+  width: 215px;
   font-size: 3rem;
   color: var(--white);
   text-decoration: none;
@@ -138,11 +189,11 @@ body {
 #search {
   grid-area: search;
   border-bottom: 3px solid var(--light-green);
-  transition: all 0.2s;
+  transition: border 0.2s;
 }
 #search:focus-within {
   border-bottom: 3px solid var(--light-yellow);
-  transition: all 0.2s;
+  transition: border 0.2s;
 }
 .search-button,
 .search-input {
@@ -203,12 +254,12 @@ body {
   border-left: 5px solid var(--light-green);
   border-radius: 0 10px 10px 0;
 }
-.section-main > p:not(:last-child) {
-  margin-bottom: 20px;
-}
 .main-temp,
 .data-temp {
   display: flex;
+}
+.main-temp {
+  margin-bottom: 20px;
 }
 .data-temp,
 .unit-temp {
@@ -223,12 +274,15 @@ body {
   font-size: 1.2rem;
   border-left: 3px solid var(--light-green);
 }
+.data-feels-like {
+  margin-right: -4px;
+}
 .main-description {
+  margin-bottom: 26px;
   font-size: 2rem;
   text-transform: capitalize;
 }
 .description-icon {
-  padding-right: 5px;
   font-size: 2.5rem;
 }
 .change-unit {
@@ -286,11 +340,11 @@ body {
 .footer-link {
   text-decoration: none;
   color: var(--light-green);
-  transition: 0.2s;
+  transition: color 0.2s;
 }
 .footer-link:hover {
   color: var(--light-yellow);
-  transition: 0.2s;
+  transition: color 0.2s;
 }
 
 .hide {
@@ -306,7 +360,7 @@ body {
       '. search .'
       '. error .';
     padding-bottom: 0;
-    text-align: center;
+    justify-items: center;
   }
   #search,
   .search-error {
@@ -349,6 +403,7 @@ body {
   .logo,
   .heading-city {
     font-size: 2.3rem;
+    text-align: center;
   }
   .search-button,
   .search-input {
@@ -365,11 +420,12 @@ body {
     font-size: 1rem;
   }
   .section-main {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border-top: 3px solid var(--light-green);
   }
   .main-temp {
-    margin-bottom: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
   }
   .data-temp,
   .unit-temp {

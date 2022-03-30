@@ -9,11 +9,9 @@ const handlers = (() => {
       const { target } = event;
 
       event.preventDefault();
-
       if (
         target.classList.contains('search-button')
-        || target.classList.contains('fa-primary')
-        || target.classList.contains('fa-secondary')
+        || target.parentElement.parentElement.classList.contains('search-button')
       ) {
         const searchInputValue = document.querySelector('.search-input').value;
         const weatherData = await api.getData(searchInputValue, 'metric');
