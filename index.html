@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="images" href="images/favicon.png" />
+    <link rel="shortcut icon" type="images" href="assets/images/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,8 +13,8 @@
     />
     <link rel="stylesheet" href="css/styles.css" type="text/css" />
     <script defer type="text/javascript" src="main.js"></script>
-    <script defer src="fontawesome/js/fontawesome.min.js"></script>
-    <script defer src="fontawesome/js/duotone.min.js"></script>
+    <script defer src="assets/fontawesome/js/fontawesome.min.js"></script>
+    <script defer src="assets/fontawesome/js/duotone.min.js"></script>
     <title>Meteo - Weather App</title>
   </head>
   <body>
@@ -25,9 +25,8 @@
         >
         <form id="search" action="#" method="get">
           <button class="search-button" type="submit">
-            <i class="fad fa-search search-button"></i>
-          </button>
-          <input
+            <i class="fad fa-search search-button"></i></button
+          ><input
             type="search"
             name="search"
             class="search-input"
@@ -47,20 +46,20 @@
 
         <div class="section-main">
           <p class="main-temp">
-            <span class="data-temp">
-               13
-            </span>
+            <span class="data-temp"></span>
             <span class="unit-temp">°C</span
-            ><span class="main-feels-like"><i class="fad fa-temperature-low fa-fw"></i>
+            ><span class="main-feels-like"
+              ><i class="fad fa-temperature-low fa-fw"></i>
               Feels Like
               <span class="measurement">
-                <span class="data-feels-like">42</span>
+                <span class="data-feels-like"></span>
                 <span class="unit-feels-like">°C</span>
               </span>
             </span>
           </p>
           <p class="main-description">
-            <i class="fad fa-clouds description-icon"></i> Scattered Clouds
+            <span class="description-icon"></span>
+            <span class="description-text"></span>
           </p>
           <p>
             <button type="button" class="change-unit">
