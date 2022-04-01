@@ -58,6 +58,21 @@ const dom = (() => {
     return false;
   }
 
+  function changeUnit(currentTempUnit) {
+    const allTempUnits = document.querySelectorAll('.current-temp-unit');
+    const changeUnitButton = document.querySelector('.button-text');
+    allTempUnits.forEach((unit) => {
+      const changedTempUnit = unit;
+      if (currentTempUnit === '°C') {
+        changedTempUnit.textContent = '°F';
+        changeUnitButton.textContent = 'Check in °C';
+      } else {
+        changedTempUnit.textContent = '°C';
+        changeUnitButton.textContent = 'Check in °F';
+      }
+    });
+  }
+
   function renderData(weatherData) {
     const cityDate = document.querySelector('.heading-city-date');
     const cityName = document.querySelector('.heading-city');
@@ -90,6 +105,7 @@ const dom = (() => {
     }
   }
   return {
+    changeUnit,
     renderData,
   };
 })();

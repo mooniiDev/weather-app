@@ -16,6 +16,12 @@ const handlers = (() => {
         const searchInputValue = document.querySelector('.search-input').value;
         const weatherData = await api.getData(searchInputValue, 'metric');
         dom.renderData(weatherData);
+
+        // BUTTON TO CHANGE UNITS OF MEASUREMENT
+      } else if (target.classList.contains('button')
+        || target.parentElement.parentElement.classList.contains('button')) {
+        const currentTempUnit = document.querySelector('.unit-temp');
+        dom.changeUnit(currentTempUnit.textContent);
       }
     });
   }
