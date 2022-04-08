@@ -1,4 +1,6 @@
-import { format, addSeconds, fromUnixTime } from 'date-fns';
+import {
+  format, addSeconds, fromUnixTime, intervalToDuration,
+} from 'date-fns';
 
 const dom = (() => {
   const errorMessage = document.querySelector('.search-error');
@@ -50,9 +52,9 @@ const dom = (() => {
     return false;
   }
 
-  function formatDate(timezone, unit) {
+  function formatDate(timezone, currentUnit) {
     let currentDate;
-    if (unit === 'metric') {
+    if (currentUnit === 'metric') {
       currentDate = format(
         addSeconds(new Date(), timezone),
         'MMMM d, yyyy | EEEE, HH:mm',
@@ -82,6 +84,19 @@ const dom = (() => {
       );
     }
     return formattedTime;
+  }
+
+  function formatDayLength(sunrise, sunset) {
+    const dayStart = fromUnixTime(sunrise);
+    const dayEnd = fromUnixTime(sunset);
+    const difference = intervalToDuration({
+      start: dayStart,
+      end: dayEnd,
+    });
+    const { hours } = difference;
+    const { minutes } = difference;
+
+    return `${hours}:${minutes}`;
   }
 
   function showTempUnits(currentUnit) {
@@ -119,6 +134,7 @@ const dom = (() => {
     const descriptionIcon = document.querySelector('.description-icon');
     const sunriseTime = document.querySelector('.sunrise');
     const sunsetTime = document.querySelector('.sunset');
+    const dayLength = document.querySelector('.day-length');
 
     descriptionIcon.textContent = '';
     showUnits(currentUnit);
@@ -157,6 +173,11 @@ const dom = (() => {
         weatherData.timezone,
         weatherData.sunset,
         currentUnit,
+      );
+
+      dayLength.textContent = formatDayLength(
+        weatherData.sunrise,
+        weatherData.sunset,
       );
     }
   }
