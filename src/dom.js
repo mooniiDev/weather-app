@@ -1,4 +1,4 @@
-const moment = require('moment');
+import { format, addSeconds, fromUnixTime } from 'date-fns';
 
 const dom = (() => {
   const errorMessage = document.querySelector('.search-error');
@@ -10,14 +10,6 @@ const dom = (() => {
     errorMessage.textContent = `${
       message.charAt(0).toUpperCase() + message.slice(1)
     }.. 🙊`;
-  }
-
-  function formatDate(timezone) {
-    const offset = timezone / 60 / 60;
-    const formattedDate = moment()
-      .utcOffset(offset)
-      .format('MMMM D, YYYY | dddd, H:mm');
-    return formattedDate;
   }
 
   function renderIcon(iconID) {
@@ -58,54 +50,117 @@ const dom = (() => {
     return false;
   }
 
-  function changeUnit(currentTempUnit) {
-    const allTempUnits = document.querySelectorAll('.current-temp-unit');
-    const changeUnitButton = document.querySelector('.button-text');
+  function formatDate(timezone, unit) {
+    let currentDate;
+    if (unit === 'metric') {
+      currentDate = format(
+        addSeconds(new Date(), timezone),
+        'MMMM d, yyyy | EEEE, HH:mm',
+      );
+    } else {
+      currentDate = format(
+        addSeconds(new Date(), timezone),
+        'MMMM d, yyyy | EEEE, h:mm aa',
+      );
+    }
+    return currentDate;
+  }
+
+  function formatTime(timezone, unix, currentUnit) {
+    const formattedTimestamp = fromUnixTime(unix);
+    let formattedTime;
+
+    if (currentUnit === 'metric') {
+      formattedTime = format(
+        addSeconds(formattedTimestamp, timezone),
+        'HH:mm',
+      );
+    } else {
+      formattedTime = format(
+        addSeconds(formattedTimestamp, timezone),
+        'h:mm aa',
+      );
+    }
+    return formattedTime;
+  }
+
+  function showTempUnits(currentUnit) {
+    const allTempUnits = document.querySelectorAll('.temp');
+    let tempUnit;
+
     allTempUnits.forEach((unit) => {
-      const changedTempUnit = unit;
-      if (currentTempUnit === '°C') {
-        changedTempUnit.textContent = '°F';
-        changeUnitButton.textContent = 'Check in °C';
+      tempUnit = unit;
+      if (currentUnit === 'metric') {
+        tempUnit.textContent = '°C';
       } else {
-        changedTempUnit.textContent = '°C';
-        changeUnitButton.textContent = 'Check in °F';
+        tempUnit.textContent = '°F';
       }
     });
   }
 
-  function renderData(weatherData) {
-    const cityDate = document.querySelector('.heading-city-date');
+  function showUnits(currentUnit) {
+    const buttonText = document.querySelector('.button-text');
+
+    if (currentUnit === 'metric') {
+      buttonText.textContent = 'Check in °F';
+      showTempUnits('metric');
+    } else {
+      buttonText.textContent = 'Check in °C';
+      showTempUnits('imperial');
+    }
+  }
+
+  function renderData(weatherData, currentUnit) {
     const cityName = document.querySelector('.heading-city');
+    const cityDate = document.querySelector('.heading-city-date');
     const cityTemp = document.querySelector('.data-temp');
     const feelsLikeTemp = document.querySelector('.data-feels-like');
-    const descriptionText = document.querySelector('.description-text');
+    const descriptionText = document.querySelector('.data-description');
     const descriptionIcon = document.querySelector('.description-icon');
-    descriptionIcon.textContent = '';
+    const sunriseTime = document.querySelector('.sunrise');
+    const sunsetTime = document.querySelector('.sunset');
 
-    // IF ERROR OCCURS
+    descriptionIcon.textContent = '';
+    showUnits(currentUnit);
+
     if (weatherData.cod) {
+      // If error occurs
       mainContent.classList.add('hide');
       showErrorMessage(weatherData.message);
     } else {
       const icon = document.createElement('i');
       const iconClass = renderIcon(weatherData.icon);
+
       mainContent.classList.remove('hide');
       errorMessage.classList.add('hide');
 
       cityName.textContent = `${weatherData.name.toUpperCase()},
       ${weatherData.country}`;
-      cityDate.textContent = formatDate(weatherData.timezone);
+
+      cityDate.textContent = formatDate(weatherData.timezone, currentUnit);
 
       cityTemp.textContent = Math.round(weatherData.temp);
+
       feelsLikeTemp.textContent = Math.round(weatherData.feelsLike);
 
       icon.classList.add('fad', `${iconClass}`, 'fa-fw', 'icon');
       descriptionIcon.appendChild(icon);
       descriptionText.textContent = weatherData.description;
+
+      sunriseTime.textContent = formatTime(
+        weatherData.timezone,
+        weatherData.sunrise,
+        currentUnit,
+      );
+
+      sunsetTime.textContent = formatTime(
+        weatherData.timezone,
+        weatherData.sunset,
+        currentUnit,
+      );
     }
   }
   return {
-    changeUnit,
     renderData,
   };
 })();

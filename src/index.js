@@ -4,8 +4,8 @@ import handlers from './handlers';
 
 // GET AND SHOW DEFAULT WEATHER DATA
 async function getDefaultData() {
-  const weatherData = await api.getData('amsterdam', 'metric');
-  dom.renderData(weatherData);
+  const weatherData = await api.getData('Amsterdam', 'metric');
+  dom.renderData(weatherData, 'metric');
   return weatherData;
 }
 getDefaultData();
