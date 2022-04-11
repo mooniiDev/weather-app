@@ -17,8 +17,12 @@ const handlers = (() => {
 
       event.preventDefault();
 
-      // BUTTON TO SEARCH FOR A CITY
-      if (
+      // RELOAD A PAGE WHEN CLICK ON LOGO
+      if (target.classList.contains('logo')) {
+        window.location.reload();
+
+        // BUTTON TO SEARCH FOR A CITY
+      } else if (
         target.classList.contains('search-button')
         || target.parentElement.parentElement.classList.contains('search-button')
       ) {
@@ -26,8 +30,10 @@ const handlers = (() => {
         loadData(searchInputValue, unit);
 
         // BUTTON TO CHANGE UNITS OF MEASUREMENT
-      } else if (target.classList.contains('change-button')
-        || target.parentElement.parentElement.classList.contains('change-button')) {
+      } else if (
+        target.classList.contains('change-button')
+        || target.parentElement.parentElement.classList.contains('change-button')
+      ) {
         if (unit === 'metric') {
           unit = 'imperial';
           loadData(searchInputValue, unit);

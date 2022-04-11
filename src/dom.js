@@ -95,8 +95,15 @@ const dom = (() => {
     });
     const { hours } = difference;
     const { minutes } = difference;
+    let formattedHours = hours.toString();
+    let formattedMinutes = minutes.toString();
 
-    return `${hours}:${minutes}`;
+    if (formattedHours >= 0 && formattedHours <= 9) {
+      formattedHours = `0${formattedHours}`;
+    } else if (formattedMinutes >= 0 && formattedMinutes <= 9) {
+      formattedMinutes = `0${formattedMinutes}`;
+    }
+    return `${formattedHours}:${formattedMinutes}`;
   }
 
   function formatWindDirection(deg) {
@@ -144,7 +151,7 @@ const dom = (() => {
       buttonText.textContent = 'Check in °F';
       changeTempUnits('metric');
       speedUnit.textContent = 'm/s';
-    } else if (currentUnit === 'imperial') {
+    } else {
       buttonText.textContent = 'Check in °C';
       changeTempUnits('imperial');
       speedUnit.textContent = 'mph';
@@ -171,9 +178,7 @@ const dom = (() => {
     descriptionIcon.textContent = '';
     showUnits(currentUnit);
 
-    if (weatherData.cod) {
-      // If error occurs
-      mainContent.classList.add('hide');
+    if (weatherData.cod) { // If error occurs
       showErrorMessage(weatherData.message);
     } else {
       const icon = document.createElement('i');
@@ -193,6 +198,7 @@ const dom = (() => {
 
       icon.classList.add('fad', `${iconClass}`, 'fa-fw', 'icon');
       descriptionIcon.appendChild(icon);
+
       descriptionText.textContent = weatherData.description;
 
       sunriseTime.textContent = formatTime(
@@ -212,13 +218,13 @@ const dom = (() => {
         weatherData.sunset,
       );
 
-      pressure.textContent = weatherData.pressure;
+      pressure.textContent = `${weatherData.pressure}hPa`;
 
-      humidity.textContent = weatherData.humidity;
+      humidity.textContent = `${weatherData.humidity}%`;
 
-      visibility.textContent = weatherData.visibility;
+      visibility.textContent = `${weatherData.visibility}m`;
 
-      cloudiness.textContent = weatherData.cloudiness;
+      cloudiness.textContent = `${weatherData.cloudiness}%`;
 
       windSpeed.textContent = weatherData.windSpeed;
 
