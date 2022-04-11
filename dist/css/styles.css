@@ -67,6 +67,11 @@
   --fa-secondary-color: var(--light-grey);
 }
 
+.fa-smoke {
+  --fa-primary-color: var(--white);
+  --fa-secondary-color: var(--light-grey);
+}
+
 .fa-wind {
   --fa-primary-color: var(--light-blue);
   --fa-secondary-color: var(--light-grey);
@@ -75,11 +80,6 @@
 .fa-expand-arrows-alt {
   --fa-primary-color: var(--light-grey);
   --fa-secondary-color: var(--light-green);
-}
-
-.fa-tornado {
-  --fa-primary-color: var(--dark-blue);
-  --fa-secondary-color: var(--light-grey);
 }
 
 /* COLOR THEMES FOR WEATHER DESCRIPTION ICONS */

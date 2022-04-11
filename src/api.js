@@ -6,18 +6,18 @@ const api = (() => {
       name: weatherData.name,
       country: weatherData.sys.country,
       timezone: weatherData.timezone,
-      description: weatherData.weather[0].description,
-      icon: weatherData.weather[0].icon,
       temp: weatherData.main.temp,
       feelsLike: weatherData.main.feels_like,
+      icon: weatherData.weather[0].icon,
+      description: weatherData.weather[0].description,
+      sunrise: weatherData.sys.sunrise,
+      sunset: weatherData.sys.sunset,
       pressure: weatherData.main.pressure,
       humidity: weatherData.main.humidity,
       visibility: weatherData.visibility,
+      cloudiness: weatherData.clouds.all,
       windSpeed: weatherData.wind.speed,
-      windGust: weatherData.wind.gust,
       windDeg: weatherData.wind.deg,
-      sunrise: weatherData.sys.sunrise,
-      sunset: weatherData.sys.sunset,
     };
     return processedData;
   }

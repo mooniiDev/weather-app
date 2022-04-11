@@ -99,7 +99,30 @@ const dom = (() => {
     return `${hours}:${minutes}`;
   }
 
-  function showTempUnits(currentUnit) {
+  function formatWindDirection(deg) {
+    let direction;
+
+    if ((deg >= 0 && deg <= 44) || (deg === 360)) {
+      direction = 'North';
+    } else if (deg >= 45 && deg <= 89) {
+      direction = 'Northeast';
+    } else if (deg >= 90 && deg <= 134) {
+      direction = 'East';
+    } else if (deg >= 135 && deg <= 179) {
+      direction = 'Southeast';
+    } else if (deg >= 180 && deg <= 224) {
+      direction = 'South';
+    } else if (deg >= 225 && deg <= 269) {
+      direction = 'Southwest';
+    } else if (deg >= 270 && deg <= 314) {
+      direction = 'West';
+    } else if (deg >= 315 && deg <= 359) {
+      direction = 'Northwest';
+    }
+    return direction;
+  }
+
+  function changeTempUnits(currentUnit) {
     const allTempUnits = document.querySelectorAll('.temp');
     let tempUnit;
 
@@ -115,13 +138,16 @@ const dom = (() => {
 
   function showUnits(currentUnit) {
     const buttonText = document.querySelector('.button-text');
+    const speedUnit = document.querySelector('.speed');
 
     if (currentUnit === 'metric') {
       buttonText.textContent = 'Check in °F';
-      showTempUnits('metric');
-    } else {
+      changeTempUnits('metric');
+      speedUnit.textContent = 'm/s';
+    } else if (currentUnit === 'imperial') {
       buttonText.textContent = 'Check in °C';
-      showTempUnits('imperial');
+      changeTempUnits('imperial');
+      speedUnit.textContent = 'mph';
     }
   }
 
@@ -135,6 +161,12 @@ const dom = (() => {
     const sunriseTime = document.querySelector('.sunrise');
     const sunsetTime = document.querySelector('.sunset');
     const dayLength = document.querySelector('.day-length');
+    const pressure = document.querySelector('.data-pressure');
+    const humidity = document.querySelector('.data-humidity');
+    const visibility = document.querySelector('.data-visibility');
+    const cloudiness = document.querySelector('.data-cloudiness');
+    const windSpeed = document.querySelector('.data-speed');
+    const windDirection = document.querySelector('.data-direction');
 
     descriptionIcon.textContent = '';
     showUnits(currentUnit);
@@ -179,6 +211,18 @@ const dom = (() => {
         weatherData.sunrise,
         weatherData.sunset,
       );
+
+      pressure.textContent = weatherData.pressure;
+
+      humidity.textContent = weatherData.humidity;
+
+      visibility.textContent = weatherData.visibility;
+
+      cloudiness.textContent = weatherData.cloudiness;
+
+      windSpeed.textContent = weatherData.windSpeed;
+
+      windDirection.textContent = formatWindDirection(weatherData.windDeg);
     }
   }
   return {
