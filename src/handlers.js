@@ -18,7 +18,8 @@ const handlers = (() => {
       event.preventDefault();
 
       // RELOAD A PAGE WHEN CLICK ON LOGO
-      if (target.classList.contains('logo')) {
+      if (target.classList.contains('logo')
+      || target.parentElement.parentElement.classList.contains('logo')) {
         window.location.reload();
 
         // BUTTON TO SEARCH FOR A CITY
