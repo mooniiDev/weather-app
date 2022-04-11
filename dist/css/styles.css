@@ -161,11 +161,6 @@
   border-radius: 5px;
 }
 
-/* VISUAL STYLE */
-.hide {
-  display: none;
-}
-
 body,
 h1,
 h2,
@@ -392,6 +387,11 @@ body {
 .footer-link:hover {
   color: var(--light-yellow);
   transition: color 0.2s;
+}
+
+/* VISUAL STYLE */
+.hide {
+  display: none;
 }
 
 @media only screen and (max-width: 992px) {
