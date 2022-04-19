@@ -41,8 +41,8 @@ const dom = (() => {
         return 'fa-thunderstorm-sun'; // Thunderstorm at day
       case '11n':
         return 'fa-thunderstorm-moon'; // Thunderstorm at night
-      case '12d':
-      case '12n':
+      case '13d':
+      case '13n':
         return 'fa-cloud-snow'; // Snow at day or at night
       case '50d':
       case '50n':
@@ -52,34 +52,43 @@ const dom = (() => {
     return false;
   }
 
+  function getLocalTimezone() {
+    const currentDate = new Date();
+    const localTimezone = currentDate.getTimezoneOffset() * 60;
+
+    return localTimezone;
+  }
+
   function formatDate(timezone, currentUnit) {
-    let currentDate;
+    let formattedDate;
+    const currentDate = new Date();
+
     if (currentUnit === 'metric') {
-      currentDate = format(
-        addSeconds(new Date(), timezone),
+      formattedDate = format(
+        addSeconds(currentDate, timezone + getLocalTimezone()),
         'MMMM d, yyyy | EEEE, HH:mm',
       );
     } else {
-      currentDate = format(
-        addSeconds(new Date(), timezone),
+      formattedDate = format(
+        addSeconds(currentDate, timezone + getLocalTimezone()),
         'MMMM d, yyyy | EEEE, h:mm aa',
       );
     }
-    return currentDate;
+    return formattedDate;
   }
 
   function formatTime(timezone, unix, currentUnit) {
-    const formattedTimestamp = fromUnixTime(unix);
+    const formattedTimestamp = fromUnixTime(unix + (timezone + getLocalTimezone()));
     let formattedTime;
 
     if (currentUnit === 'metric') {
       formattedTime = format(
-        addSeconds(formattedTimestamp, timezone),
+        formattedTimestamp,
         'HH:mm',
       );
     } else {
       formattedTime = format(
-        addSeconds(formattedTimestamp, timezone),
+        formattedTimestamp,
         'h:mm aa',
       );
     }
@@ -190,7 +199,7 @@ const dom = (() => {
       cityName.textContent = `${weatherData.name.toUpperCase()},
       ${weatherData.country}`;
 
-      cityDate.textContent = formatDate(weatherData.timezone, currentUnit);
+      cityDate.textContent = formatDate(weatherData.timezone, currentUnit, weatherData.name);
 
       cityTemp.textContent = Math.round(weatherData.temp);
 
@@ -226,7 +235,7 @@ const dom = (() => {
 
       cloudiness.textContent = `${weatherData.cloudiness}%`;
 
-      windSpeed.textContent = weatherData.windSpeed;
+      windSpeed.textContent = Math.round(weatherData.windSpeed);
 
       windDirection.textContent = formatWindDirection(weatherData.windDeg);
     }

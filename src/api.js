@@ -31,8 +31,7 @@ const api = (() => {
 
       const data = await response.json();
 
-      // IF ERROR OCCURS
-      if (response.status >= 400) {
+      if (response.status >= 400) { // If error occurs
         return data;
       }
       return processData(data);

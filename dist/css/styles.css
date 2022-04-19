@@ -283,8 +283,7 @@ body {
 .section-main {
   grid-area: main-info;
   padding: 22px 30px 30px 30px;
-  background-color: #0a121a1a;
-  /* Transparent dark blue */
+  background-color: #0a121a1a; /* Transparent dark blue */
   border-left: 5px solid var(--light-green);
   border-radius: 0 10px 10px 0;
 }
