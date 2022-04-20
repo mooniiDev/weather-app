@@ -3,6 +3,8 @@ import dom from './dom';
 
 const handlers = (() => {
   async function loadData(city, unit) {
+    dom.showMessage('loading');
+
     const weatherData = await api.getData(city, unit);
     dom.renderData(weatherData, unit);
   }
@@ -46,6 +48,7 @@ const handlers = (() => {
     });
   }
   return {
+    loadData,
     listenClicks,
   };
 })();

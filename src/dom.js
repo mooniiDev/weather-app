@@ -3,15 +3,23 @@ import {
 } from 'date-fns';
 
 const dom = (() => {
-  const errorMessage = document.querySelector('.search-error');
+  const message = document.querySelector('.message');
   const mainContent = document.querySelector('.main');
 
-  function showErrorMessage(message) {
-    mainContent.classList.add('hide');
-    errorMessage.classList.remove('hide');
-    errorMessage.textContent = `${
-      message.charAt(0).toUpperCase() + message.slice(1)
-    }.. 🙊`;
+  function showMessage(state, error) { // Show loading and error messages
+    message.classList.remove('hide');
+
+    if (state === 'loading') {
+      message.classList.remove('error');
+      message.textContent = 'Loading...';
+      mainContent.classList.add('hide');
+    } else if (state === 'error') {
+      message.classList.add('error');
+      message.textContent = `${
+        error.charAt(0).toUpperCase() + error.slice(1)
+      }.. 🙊`;
+      mainContent.classList.add('hide');
+    }
   }
 
   function renderIcon(iconID) {
@@ -188,13 +196,13 @@ const dom = (() => {
     showUnits(currentUnit);
 
     if (weatherData.cod) { // If error occurs
-      showErrorMessage(weatherData.message);
+      showMessage('error', weatherData.message);
     } else {
       const icon = document.createElement('i');
       const iconClass = renderIcon(weatherData.icon);
 
       mainContent.classList.remove('hide');
-      errorMessage.classList.add('hide');
+      message.classList.add('hide');
 
       cityName.textContent = `${weatherData.name.toUpperCase()},
       ${weatherData.country}`;
@@ -241,6 +249,7 @@ const dom = (() => {
     }
   }
   return {
+    showMessage,
     renderData,
   };
 })();

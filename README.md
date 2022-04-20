@@ -5,7 +5,7 @@
 <div align="center">
 
   <h1>
-    <img alt="Meteo logo" src="https://user-images.githubusercontent.com/51089302/164212893-cfe01441-aa35-4797-9a05-b3ada6a3c222.png" height="50px">
+    <img alt="Meteo logo" src="https://user-images.githubusercontent.com/51089302/164238255-35d1e965-1881-4dde-8e76-295986802c37.png" height="50px">
   </h1>
 
   <p>A weather app that uses the OpenWeather API to display the current weather forecast for a searched location.</p>
