@@ -126,21 +126,22 @@ const dom = (() => {
   function formatWindDirection(deg) {
     let direction;
 
-    if ((deg >= 0 && deg <= 44) || (deg === 360)) {
+    if ((deg >= 0 && deg <= 22.5)
+    || (deg > 337.5 && deg <= 360)) {
       direction = 'North';
-    } else if (deg >= 45 && deg <= 89) {
+    } else if (deg >= 22.5 && deg <= 67.5) {
       direction = 'Northeast';
-    } else if (deg >= 90 && deg <= 134) {
+    } else if (deg >= 67.5 && deg <= 112.5) {
       direction = 'East';
-    } else if (deg >= 135 && deg <= 179) {
+    } else if (deg >= 112.5 && deg <= 157.5) {
       direction = 'Southeast';
-    } else if (deg >= 180 && deg <= 224) {
+    } else if (deg >= 157.5 && deg <= 202.5) {
       direction = 'South';
-    } else if (deg >= 225 && deg <= 269) {
+    } else if (deg >= 202.5 && deg <= 247.5) {
       direction = 'Southwest';
-    } else if (deg >= 270 && deg <= 314) {
+    } else if (deg >= 247.5 && deg <= 292.5) {
       direction = 'West';
-    } else if (deg >= 315 && deg <= 359) {
+    } else if (deg >= 292.5 && deg <= 337.5) {
       direction = 'Northwest';
     }
     return direction;
