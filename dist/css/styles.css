@@ -403,14 +403,14 @@ body {
     grid-template-areas:
       '. logo .'
       '. search .'
-      '. error .';
+      '. message .';
     justify-items: center;
     padding-bottom: 0;
   }
 
   #search,
-  .search-error {
-    padding-top: 30px;
+  .message {
+    margin-top: 20px;
   }
 
   .main {
@@ -455,6 +455,12 @@ body {
   .heading-city {
     text-align: center;
     font-size: 2.3rem;
+  }
+
+  #search,
+  .message {
+    margin-top: 15px;
+    font-size: 0.9rem;
   }
 
   .search-button,
