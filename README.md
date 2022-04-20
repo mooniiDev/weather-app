@@ -70,7 +70,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 ```sh
 $ git clone https://github.com/mooniiDev/weather-app.git
 ```
-2. Go into the cloned repository:
+2. Go to the cloned repository:
 ```sh
 $ cd weather-app
 ```
